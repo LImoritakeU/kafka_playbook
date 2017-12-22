@@ -1,0 +1,19 @@
+---
+- group: name=kafka system=true
+- user: name=kafka group=kafka system=true
+
+- name: mkdir kafka located dir -> {{ kafka_dir }}, kafka_data_dirs -> {{ kafka.data_dirs }}
+  file: path={{ item }} state=directory owner=kafka group=kafka
+  with_items:
+    - "{{ kafka_dir }}"
+    - "{{ kafka.data_dirs }}"
+
+- name: Unpack tarball
+  unarchive: src=kafka_{{ kafka.scala_version }}-{{ kafka.version }}.tgz dest={{ kafka.untar_dir }}
+
+- name: Configure kafka server.properties
+  template: src=server.properties.j2 dest={{ kafka_dir }}/config/server.properties owner=kafka group=kafka
+
+- name: Add kafka's bin dir to the PATH
+  copy: content="export PATH=$PATH:{{ kafka_dir }}/bin" dest="/etc/profile.d/kafka_path.sh" mode=755
+  when: kafka_register_path_env

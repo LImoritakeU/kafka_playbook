@@ -1,0 +1,33 @@
+---
+
+zk_version: 3.4.11
+zk_client_port: 2181
+zk_connet_ports: "2888:3888"
+
+zk_tarball_dir: /tmp
+zk_parent_dir: /opt
+zk_dir: "{{ zk_parent_dir }}/zookeeper-{{zk_version}}"
+data_dir: /var/lib/zookeeper
+log_dir: /var/log/zookeeper
+
+init_limit: 5
+sync_limit: 2
+tick_time: 2000
+zk_autopurge_purgeInterval: 0
+zk_autopurge_snapRetainCount: 10
+
+
+# Rolling file appender setttings
+zk_rolling_log_file_max_size: 10MB
+zk_max_rolling_log_file_count: 10
+
+# List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
+zk_hosts:
+  - host: "127.0.0.1" # the machine running
+    id: 1
+
+# Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh
+zk_env:
+  JAVA_HOME: "{{ java_home }}"
+
+zk_register_path_env: true

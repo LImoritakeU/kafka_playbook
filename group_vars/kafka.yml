@@ -1,0 +1,8 @@
+---
+kafka_cluster_info:
+  kafka-1:
+    broker_id: 1
+  kafka-2:
+    broker_id: 2
+  kafka-3:
+    broker_id: 3

@@ -1,0 +1,14 @@
+[zookeeper]
+zk-1 ansible_host=192.168.1.191
+zk-2 ansible_host=192.168.1.192
+zk-3 ansible_host=192.168.1.193
+
+[kafka]
+kafka-1 ansible_host=192.168.1.191
+kafka-2 ansible_host=192.168.1.192
+kafka-3 ansible_host=192.168.1.193
+
+[all:vars]
+ansible_user=vagrant
+# ansible_pass=vagrant
+

@@ -1,0 +1,35 @@
+---
+- group: name=zookeeper system=true
+- user: name=zookeeper group=zookeeper system=true
+
+
+- name: mkdir zk_dir at {{ zk_parent_dir }}/zookeeper-{{ zk_version }}
+  file: path={{ item }} state=directory owner=zookeeper group=zookeeper
+  with_items:
+    - "{{ zk_dir }}"
+    - "{{ data_dir }}"
+    - "{{ log_dir }}"
+
+
+- name: Unpack tarball
+  unarchive: src=zookeeper-{{ zk_version }}.tar.gz dest={{ zk_parent_dir }} group=zookeeper owner=zookeeper
+  when: install_offine
+
+
+- name: Write myid file
+  template: src=myid.j2 dest={{ data_dir }}/myid owner=zookeeper group=zookeeper force=true
+  tags: deploy
+  notify:
+    - Restart zookeeper
+
+
+- name: Configure zookeeper zoo.cfg
+  template: src=zoo.cfg.j2 dest={{ zk_dir }}/conf/zoo.cfg owner=zookeeper group=zookeeper
+  tags: deploy
+  notify:
+    - Restart zookeeper
+
+
+- name: Add zookeeper's bin dir to the PATH
+  copy: content="export PATH=$PATH:{{ zk_dir }}/bin" dest="/etc/profile.d/zookeeper_path.sh" mode=755
+  when: zk_register_path_env

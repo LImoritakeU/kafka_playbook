@@ -1,0 +1,10 @@
+---
+zk_hosts:
+  - host: zk-1
+    id: 1
+  - host2:
+    host: zk-2
+    id: 2
+  - host3:
+    host: zk-3
+    id: 3

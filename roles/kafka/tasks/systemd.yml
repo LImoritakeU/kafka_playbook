@@ -1,0 +1,7 @@
+---
+- name: Systemd script
+  template: src=kafka.service.j2 dest=/lib/systemd/system/kafka.service
+  when: ansible_service_mgr == 'systemd'
+  notify:
+    - Reload systemctl daemon
+    - Restart kafka

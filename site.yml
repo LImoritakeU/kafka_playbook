@@ -1,0 +1,11 @@
+---
+
+- name: Setup zookeeper
+  hosts: zookeeper
+  roles:
+    - zookeeper
+
+- name: Setup kafka
+  hosts: kafka
+  roles:
+    - kafka

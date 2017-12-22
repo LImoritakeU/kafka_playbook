@@ -1,0 +1,6 @@
+---
+
+- include: tarball.yml
+
+- include: systemd.yml
+  tags: deploy

@@ -1,0 +1,23 @@
+tickTime={{ tick_time }}
+dataDir={{ data_dir }}
+dataLogDir={{ log_dir }}
+clientPort={{ zk_client_port }}
+initLimit={{ init_limit }}
+syncLimit={{ sync_limit }}
+
+{% if zk_autopurge_purgeInterval > 0 %}
+autopurge.purgeInterval={{ zk_autopurge_purgeInterval }}
+autopurge.snapRetainCount={{ zk_autopurge_snapRetainCount }}
+{% endif %}
+
+{% for server in zk_hosts %}
+{% if server.host is defined %}
+{% if server.ip is defined %}
+server.{{server.id}}={{server.ip}}:{{zk_connet_ports}}
+{% else %}
+server.{{server.id}}={{server.host}}:{{zk_connet_ports}}
+{% endif %}
+{% else %}
+server.{{loop.index}}={{server}}:{{zk_connet_ports}}
+{% endif %}
+{% endfor %}

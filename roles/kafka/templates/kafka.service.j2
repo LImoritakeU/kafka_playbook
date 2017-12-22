@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache Kafka server
+After=network.target
+
+[Service]
+User=kafka
+Group=kafka
+Environment=JAVA_HOME={{ java_home }}
+ExecStart={{ kafka_dir }}/bin/kafka-server-start.sh {{ kafka_dir }}/config/server.properties
+ExecStop={{ kafka_dir }}/bin/kafka-server-stop.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

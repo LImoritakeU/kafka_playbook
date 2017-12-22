@@ -1,0 +1,16 @@
+############################# Server Basics #############################
+broker.id={{ kafka_cluster_info[ansible_hostname]['broker_id'] }}
+
+
+listeners={{ kafka.listeners }}
+
+advertised.listeners={{ kafka.advertised_listener }}
+
+############################# Log Basics #############################
+# A comma seperated list of directories under which to store log files
+
+log.dirs={{ kafka.data_dirs }}
+
+############################# Zookeeper #############################
+
+zookeeper.connect={{ zk_hosts | join(":{0},".format(zk_port)) }}:{{ zk_port }}
