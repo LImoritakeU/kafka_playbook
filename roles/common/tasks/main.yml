@@ -1,2 +1,14 @@
 ---
 # tasks file for common
+
+- include: rhel.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: update /etc/hosts
+  template:
+    src: "hosts.j2"
+    dest: "/etc/hosts"
+    owner: root
+    group: root
+    mode: "0644"
+  become: true

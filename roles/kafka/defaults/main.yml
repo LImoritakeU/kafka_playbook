@@ -5,7 +5,7 @@ kafka:
   untar_dir: "/opt"
   data_dirs: "/tmp/kafka-logs" # Location Where kafka save data.
   listeners: "PLAINTEXT://:9092"
-  advertised_listener: "PLAINTEXT://:9092"
+  advertised_listener: "PLAINTEXT://{{ ansible_host }}:9092"
 
 kafka_dir: "{{ kafka.untar_dir }}/kafka_{{ kafka.scala_version }}-{{ kafka.version }}"
 

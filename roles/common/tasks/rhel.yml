@@ -1,0 +1,12 @@
+---
+
+- file: path=/tmp/rpms state=directory
+
+- name: Copy rpms
+  copy: src={{ item }} dest=/tmp/rpms
+  with_items:
+    - "libselinux-python-2.5-11.el7.x86_64.rpm"
+
+- name: Install OS Packages from /tmp/rpms (libselinux-python is required)
+  yum: name=/tmp/rpms/libselinux-python-2.5-11.el7.x86_64.rpm state=present
+

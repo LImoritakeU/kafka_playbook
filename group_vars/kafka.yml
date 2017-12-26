@@ -1,8 +1,8 @@
 ---
 kafka_cluster_info:
-  kafka-1:
+  dsc-01:            # hostname
     broker_id: 1
-  kafka-2:
+  dsc-02:
     broker_id: 2
-  kafka-3:
+  dsc-03:
     broker_id: 3

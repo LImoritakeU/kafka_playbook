@@ -1,0 +1,12 @@
+---
+
+- name: download requirement files to control machine
+  local_action:
+    get_url: url={{ item }} dest={{role_path}}/files
+  with_items:
+    - "{{ selinux_python_url }}"
+    - "{{ zk_url }}"
+    - "{{ kafka_url }}"
+
+- name: copy files to hosts
+

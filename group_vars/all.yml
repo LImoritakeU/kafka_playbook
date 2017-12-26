@@ -1,3 +1,11 @@
 ---
-install_offline: True
-java_home: "/usr/lib/jvm/jdk1.8.0_102"
+java_home: "/usr/lib/jvm/jre-1.8.0"
+
+install_offline: true
+auto_numbering: false
+# auto_numbering will generating zk's id and kafka's broker_id
+# by using inventory_hostname's naming rule: "sometime-number", eg:
+# [kafka]
+# kafka-1  => id=1
+# kafka-2  => id=2
+# kafka-3  => id=3

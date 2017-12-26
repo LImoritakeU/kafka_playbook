@@ -9,7 +9,7 @@
     - "{{ kafka.data_dirs }}"
 
 - name: Unpack tarball
-  unarchive: src=kafka_{{ kafka.scala_version }}-{{ kafka.version }}.tgz dest={{ kafka.untar_dir }}
+  unarchive: src=kafka_{{ kafka.scala_version }}-{{ kafka.version }}.tgz dest={{ kafka.untar_dir }} owner=kafka group=kafka
 
 - name: Configure kafka server.properties
   template: src=server.properties.j2 dest={{ kafka_dir }}/config/server.properties owner=kafka group=kafka

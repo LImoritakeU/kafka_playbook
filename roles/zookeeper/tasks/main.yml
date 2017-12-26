@@ -1,6 +1,8 @@
 ---
 
-- include: rhel.yml
-  when: ansible_os_family == 'RedHat'
+- include: tarball.yml
+
+- include: systemd.yml
+  tags: deploy
 
 - include: common-config.yml

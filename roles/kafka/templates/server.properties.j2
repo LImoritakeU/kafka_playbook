@@ -1,6 +1,9 @@
 ############################# Server Basics #############################
-broker.id={{ kafka_cluster_info[ansible_hostname]['broker_id'] }}
+{% if auto_numbering %}
+  {% set broker_id = inventory_hostname.split('-')[-1] %}
+{% endif %}
 
+broker.id={{ hostvars[inventory_hostname]['broker_id'] }}
 
 listeners={{ kafka.listeners }}
 

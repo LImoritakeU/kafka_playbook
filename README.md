@@ -18,4 +18,9 @@ ansible-playbook site.yml --become
 
 ## Todo
 
-- online and offline environent
+- firewalld (zookeeper required)
+- common role
+  - online and offline environent
+- auto_numbering
+- testing after setup
+

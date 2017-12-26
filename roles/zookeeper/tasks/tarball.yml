@@ -13,7 +13,6 @@
 
 - name: Unpack tarball
   unarchive: src=zookeeper-{{ zk_version }}.tar.gz dest={{ zk_parent_dir }} group=zookeeper owner=zookeeper
-  when: install_offine
 
 
 - name: Write myid file
