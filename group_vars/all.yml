@@ -1,5 +1,14 @@
 ---
-java_home: "/usr/lib/jvm/jre-1.8.0"
+
+firewalld:
+  actived: false
+  enabled_ports:
+    - 9092
+    - 2181
+    - 2888
+    - 3888
+
+java_home: "/usr/lib/jvm/jdk1.8.0_102"
 
 install_offline: true
 auto_numbering: false

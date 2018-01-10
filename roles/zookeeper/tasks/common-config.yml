@@ -6,12 +6,17 @@
     - Restart zookeeper
   when: zk_env is defined and zk_env|length > 0
 
+
 - name: Update the log4j config
   template: src=log4j.properties.j2 dest={{ zk_dir }}/conf/log4j.properties
   tags: deploy
   notify:
     - Restart zookeeper
 
+
 - name: Enable zookeeper Service
-  service: name=zookeeper enabled=true
-  tags: deploy
+  service: name=zookeeper enabled=true use=systemd
+  tags:
+    - service
+
+

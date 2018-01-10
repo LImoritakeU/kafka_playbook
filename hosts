@@ -1,15 +1,15 @@
 [zookeeper]
-zk-1 ansible_host=192.168.1.101
-zk-2 ansible_host=192.168.1.102
-zk-3 ansible_host=192.168.1.103
+zk-1 ansible_host=192.168.1.191
+zk-2 ansible_host=192.168.1.192
+zk-3 ansible_host=192.168.1.193
 
 [kafka]
-kafka-1 ansible_host=192.168.1.101 broker_id=1
-kafka-2 ansible_host=192.168.1.102 broker_id=2
-kafka-3 ansible_host=192.168.1.103 broker_id=3
+kafka-1 ansible_host=192.168.1.191 broker_id=1
+kafka-2 ansible_host=192.168.1.192 broker_id=2
+kafka-3 ansible_host=192.168.1.193 broker_id=3
 
 [all:vars]
-ansible_user=btserver
-ansible_pass=qazxsw
-ansible_sudo_pass=qazxsw
+ansible_user=vagrant
+ansible_pass=vagrant
+ansible_sudo_pass=vagrant
 

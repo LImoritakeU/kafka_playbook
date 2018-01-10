@@ -10,6 +10,8 @@ Type=simple
 User=zookeeper
 Group=zookeeper
 ExecStart={{zk_dir}}/bin/zkServer.sh start-foreground
+ExecStop={{zk_dir}}/bin/zkServer.sh stop
+ExecReload={{zk_dir}}/bin/zkServer.sh restart
 Restart=always
 RestartSec=3
 

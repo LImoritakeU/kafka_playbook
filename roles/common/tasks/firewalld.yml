@@ -1,0 +1,7 @@
+---
+- firewalld:
+    port: "{{ item }}/tcp"
+    permanent: true
+    state: enabled
+  with_items: "{{ firewalld.enabled_ports }}"
+  when: firewalld.enabled_ports is defined

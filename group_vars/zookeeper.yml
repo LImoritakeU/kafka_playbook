@@ -8,3 +8,13 @@ zk_hosts:
   - host3:
     host: zk-3
     id: 3
+
+# zk_parent_dir:
+# data_dir:
+# data_log_dir:
+# zk_client_port:
+zk_register_path_env: true
+zk_env:
+  JAVA_OPTS: '"-Xmx512M -Xms512M"'
+  JAVA_HOME: "{{ java_home }}"
+

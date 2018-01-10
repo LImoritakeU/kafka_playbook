@@ -3,10 +3,11 @@
 - user: name=kafka group=kafka system=true
 
 - name: mkdir kafka located dir -> {{ kafka_dir }}, kafka_data_dirs -> {{ kafka.data_dirs }}
-  file: path={{ item }} state=directory owner=kafka group=kafka
+  file: path={{ item }} state=directory owner=kafka group=kafka recurse=yes
   with_items:
     - "{{ kafka_dir }}"
     - "{{ kafka.data_dirs }}"
+    - "{{ kafka_log_dir if kafka_log_dir else '' }}"
 
 - name: Unpack tarball
   unarchive: src=kafka_{{ kafka.scala_version }}-{{ kafka.version }}.tgz dest={{ kafka.untar_dir }} owner=kafka group=kafka

@@ -4,6 +4,7 @@
 - include: rhel.yml
   when: ansible_os_family == 'RedHat'
 
+
 - name: update /etc/hosts
   template:
     src: "hosts.j2"
@@ -12,3 +13,6 @@
     group: root
     mode: "0644"
   become: true
+
+- include: firewalld.yml
+  when: firewalld.actived | bool

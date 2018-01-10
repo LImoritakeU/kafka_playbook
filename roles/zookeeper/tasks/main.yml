@@ -1,8 +1,11 @@
 ---
 
 - include: tarball.yml
+  tags:
+    - deploy
 
 - include: systemd.yml
-  tags: deploy
+  tags:
+    - service
 
 - include: common-config.yml

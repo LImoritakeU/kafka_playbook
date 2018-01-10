@@ -5,7 +5,9 @@ After=network.target
 [Service]
 User=kafka
 Group=kafka
-Environment=JAVA_HOME={{ java_home }}
+Environment={% if kafka_env and kafka_register_path_env %}{% for key, value in kafka_env.items() | sort %}
+"{{  key + "=" + value }}"
+{%- if loop.first %} {% endif %} {% endfor %} {% endif %}{{ "\n"}}
 ExecStart={{ kafka_dir }}/bin/kafka-server-start.sh {{ kafka_dir }}/config/server.properties
 ExecStop={{ kafka_dir }}/bin/kafka-server-stop.sh
 Restart=on-failure

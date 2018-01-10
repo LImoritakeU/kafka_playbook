@@ -8,10 +8,10 @@
 - name: Setup zookeeper
   hosts: zookeeper
   roles:
-    - zookeeper
+    - { role: zookeeper, tags: zookeeper}
 
 
 - name: Setup kafka
   hosts: kafka
   roles:
-    - kafka
+    - { role: kafka, tags: kafka }

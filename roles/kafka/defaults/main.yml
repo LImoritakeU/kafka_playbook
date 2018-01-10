@@ -8,7 +8,8 @@ kafka:
   advertised_listener: "PLAINTEXT://{{ ansible_host }}:9092"
 
 kafka_dir: "{{ kafka.untar_dir }}/kafka_{{ kafka.scala_version }}-{{ kafka.version }}"
-
+kafka_log_dir: ""
+# Should be a list of node hostnames to node info, Need to overwrite
 kafka_cluster_info:
   kafka-1:
     broker_id: 1
@@ -16,18 +17,14 @@ kafka_cluster_info:
     broker_id: 2
   kafka-3:
     broker_id: 3
-# Should be a list of node hostnames to node info
-# Example:
-# kafka_cluster_info:
-#   kafka-node-1:
-#     broker_id: 1
-#   kafka-node-2:
-#     broker_id: 2
-#   kafka-node-3:
-#     broker_id: 3
 
 zk_hosts: "{{ groups['zookeeper'] }}"
 zk_port: 2181
 
 kafka_register_path_env: true
-
+kafka_env:
+  JAVA_HOME: "{{ java_home }}"
+  LOG_DIR: "{{ kafka_log_dir if kafka_log_dir else '' }}"
+  JAVA_OPTS:
+  JMX_PORT:
+  KAFKA_JMX_OPTS:

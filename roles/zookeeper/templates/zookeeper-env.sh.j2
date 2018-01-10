@@ -1,5 +1,5 @@
 {% if zk_env is defined %}
 {% for key, value in zk_env.items() | sort %}
-{{key}}={{value}}
+{{key + "=" + value}}
 {% endfor %}
 {% endif %}

@@ -8,12 +8,12 @@ zk_tarball_dir: /tmp
 zk_parent_dir: /opt
 zk_dir: "{{ zk_parent_dir }}/zookeeper-{{zk_version}}"
 data_dir: /var/lib/zookeeper
-log_dir: /var/log/zookeeper
+data_log_dir: /var/log/zookeeper
 
 init_limit: 5
 sync_limit: 2
 tick_time: 2000
-zk_autopurge_purgeInterval: 0
+zk_autopurge_purgeInterval: 48
 zk_autopurge_snapRetainCount: 10
 
 
@@ -27,7 +27,8 @@ zk_hosts:
     id: 1
 
 # Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh
+zk_register_path_env: true
 zk_env:
   JAVA_HOME: "{{ java_home }}"
+  JAVA_OPTS: '"-Xmx1G -Xms1G"'
 
-zk_register_path_env: true
